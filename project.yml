@@ -1,0 +1,24 @@
+name: LaunchMenu
+options:
+  bundleIdPrefix: com.example
+settings:
+  base:
+    SWIFT_VERSION: 5.0
+targets:
+  LaunchMenu:
+    type: application
+    platform: macOS
+    deploymentTarget: "26.0"
+    sources:
+      - path: LaunchMenu
+    settings:
+      base:
+        PRODUCT_NAME: LaunchMenu
+        PRODUCT_BUNDLE_IDENTIFIER: com.example.launchmenu
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: LaunchMenu
+        INFOPLIST_KEY_LSUIElement: YES
+        INFOPLIST_KEY_NSPrincipalClass: NSApplication
+        CURRENT_PROJECT_VERSION: 1
+        MARKETING_VERSION: 1.0
+        CODE_SIGN_STYLE: Automatic
