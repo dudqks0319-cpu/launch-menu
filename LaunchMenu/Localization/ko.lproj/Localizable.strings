@@ -1,7 +1,7 @@
 "action.close" = "닫기";
 "action.refresh" = "새로고침";
 "action.settings" = "설정";
-"app.subtitle.hotkeys" = "Command+L로 열고, ESC로 닫습니다. Option 키 또는 길게 눌러 편집 모드로 전환합니다.";
+"app.subtitle.hotkeys.format" = "%@로 열고, ESC로 닫습니다. Option 키 또는 길게 눌러 편집 모드로 전환합니다.";
 "app.title" = "Launch Menu";
 "appearance.mode.dark" = "다크";
 "appearance.mode.light" = "라이트";
@@ -131,3 +131,8 @@
 
 "error.backup.invalid.file" = "선택한 항목이 올바른 백업 파일이 아닙니다.";
 "error.backup.file.too.large" = "백업 파일이 너무 큽니다 (최대 %dMB).";
+"settings.toggle.hotkey" = "런치 열기 단축키";
+"hotkey.command.l" = "Command+L";
+"hotkey.option.space" = "Option+Space";
+"hotkey.f4" = "F4";
+"error.dock.duplicate" = "이미 Dock에 추가된 앱입니다.";

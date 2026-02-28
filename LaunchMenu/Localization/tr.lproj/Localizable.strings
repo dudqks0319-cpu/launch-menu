@@ -130,4 +130,10 @@
 "uninstall.confirm.generic" = "Do you want to delete this app?";
 
 "error.backup.invalid.file" = "Selected item is not a valid backup file.";
-"error.backup.file.too.large" = "Backup file is too large (max 0MB).";
+"error.backup.file.too.large" = "Backup file is too large (max %dMB).";
+"app.subtitle.hotkeys.format" = "Open with %@, close with ESC. Use Option key or long press to enter edit mode.";
+"settings.toggle.hotkey" = "Launch toggle hotkey";
+"hotkey.command.l" = "Command+L";
+"hotkey.option.space" = "Option+Space";
+"hotkey.f4" = "F4";
+"error.dock.duplicate" = "This app is already in Dock.";

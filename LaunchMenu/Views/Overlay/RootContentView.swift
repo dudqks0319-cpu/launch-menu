@@ -285,7 +285,7 @@ struct RootContentView: View {
                 Text(L10n.t("app.title"))
                     .font(.system(size: 30, weight: .semibold))
 
-                Text(L10n.t("app.subtitle.hotkeys"))
+                Text(L10n.f("app.subtitle.hotkeys.format", store.settings.toggleHotkey.displayText))
                     .font(.system(size: 13))
                     .foregroundStyle(.secondary)
 

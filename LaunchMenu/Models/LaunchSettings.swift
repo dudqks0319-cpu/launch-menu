@@ -1,5 +1,33 @@
 import Foundation
 
+enum LaunchToggleHotkey: String, CaseIterable, Codable {
+    case commandL
+    case optionSpace
+    case f4
+
+    var title: String {
+        switch self {
+        case .commandL:
+            return L10n.t("hotkey.command.l")
+        case .optionSpace:
+            return L10n.t("hotkey.option.space")
+        case .f4:
+            return L10n.t("hotkey.f4")
+        }
+    }
+
+    var displayText: String {
+        switch self {
+        case .commandL:
+            return "Command+L"
+        case .optionSpace:
+            return "Option+Space"
+        case .f4:
+            return "F4"
+        }
+    }
+}
+
 enum HotCornerLocation: String, CaseIterable, Codable {
     case topLeft
     case topRight
@@ -55,6 +83,7 @@ enum BackgroundStyle: String, CaseIterable, Codable {
 }
 
 struct LaunchSettings: Equatable, Codable {
+    var toggleHotkey: LaunchToggleHotkey
     var showHiddenApps: Bool
     var searchDebounceMilliseconds: Int
     var gridColumnCount: Int
@@ -73,6 +102,7 @@ struct LaunchSettings: Equatable, Codable {
     var customBackgroundHex: String
 
     init(
+        toggleHotkey: LaunchToggleHotkey = .commandL,
         showHiddenApps: Bool = false,
         searchDebounceMilliseconds: Int = 200,
         gridColumnCount: Int = 4,
@@ -90,6 +120,7 @@ struct LaunchSettings: Equatable, Codable {
         appearanceMode: ThemeAppearanceMode = .system,
         customBackgroundHex: String = "#1A1A1A"
     ) {
+        self.toggleHotkey = toggleHotkey
         self.showHiddenApps = showHiddenApps
         self.searchDebounceMilliseconds = searchDebounceMilliseconds
         self.gridColumnCount = gridColumnCount
@@ -113,6 +144,7 @@ struct LaunchSettings: Equatable, Codable {
 
 extension LaunchSettings {
     private enum CodingKeys: String, CodingKey {
+        case toggleHotkey
         case showHiddenApps
         case searchDebounceMilliseconds
         case gridColumnCount
@@ -133,6 +165,7 @@ extension LaunchSettings {
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
+        toggleHotkey = try container.decodeIfPresent(LaunchToggleHotkey.self, forKey: .toggleHotkey) ?? .commandL
         showHiddenApps = try container.decodeIfPresent(Bool.self, forKey: .showHiddenApps) ?? false
         searchDebounceMilliseconds = try container.decodeIfPresent(Int.self, forKey: .searchDebounceMilliseconds) ?? 200
         gridColumnCount = try container.decodeIfPresent(Int.self, forKey: .gridColumnCount) ?? 4

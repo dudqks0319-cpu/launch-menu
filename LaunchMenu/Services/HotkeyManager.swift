@@ -4,9 +4,11 @@ final class GlobalHotkeyManager {
     private var globalMonitor: Any?
     private var localMonitor: Any?
     private var onToggle: (() -> Void)?
+    private var toggleHotkey: LaunchToggleHotkey = .commandL
 
-    func start(onToggle: @escaping () -> Void) {
+    func start(hotkey: LaunchToggleHotkey, onToggle: @escaping () -> Void) {
         stop()
+        self.toggleHotkey = hotkey
         self.onToggle = onToggle
 
         globalMonitor = NSEvent.addGlobalMonitorForEvents(matching: .keyDown) { [weak self] event in
@@ -37,17 +39,26 @@ final class GlobalHotkeyManager {
         stop()
     }
 
+    func setHotkey(_ hotkey: LaunchToggleHotkey) {
+        toggleHotkey = hotkey
+    }
+
     private func handle(_ event: NSEvent) {
         guard isToggleHotkey(event) else { return }
         onToggle?()
     }
 
     private func isToggleHotkey(_ event: NSEvent) -> Bool {
-        // Command + L
-        guard event.keyCode == 37 else { return false }
-        let required: NSEvent.ModifierFlags = [.command]
-        let ignored: NSEvent.ModifierFlags = [.option, .control, .shift]
         let flags = event.modifierFlags.intersection(.deviceIndependentFlagsMask)
-        return flags.contains(required) && flags.intersection(ignored).isEmpty
+        let disallowed: NSEvent.ModifierFlags = [.command, .option, .control, .shift]
+
+        switch toggleHotkey {
+        case .commandL:
+            return event.keyCode == 37 && flags == [.command]
+        case .optionSpace:
+            return event.keyCode == 49 && flags == [.option]
+        case .f4:
+            return event.keyCode == 118 && flags.intersection(disallowed).isEmpty
+        }
     }
 }

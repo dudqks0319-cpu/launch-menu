@@ -65,6 +65,8 @@ final class LaunchpadImporter: LaunchpadImporting {
     }
 
     private func launchpadDatabaseURL() throws -> URL {
+        // Note: macOS stores the per-user Launchpad DB under DARWIN_USER_DIR.
+        // We call the fixed system binary (/usr/bin/getconf) with fixed args only.
         let process = Process()
         process.executableURL = URL(fileURLWithPath: "/usr/bin/getconf")
         process.arguments = ["DARWIN_USER_DIR"]

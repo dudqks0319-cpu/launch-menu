@@ -31,7 +31,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         })
         statusBarController?.setActive(false)
 
-        hotkeyManager.start { [weak self] in
+        hotkeyManager.start(hotkey: store.settings.toggleHotkey) { [weak self] in
             self?.toggleOverlay()
         }
 
@@ -46,6 +46,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         ) { [weak self] notification in
             guard let settings = notification.object as? LaunchSettings else { return }
             Task { @MainActor in
+                self?.applyHotkeySettings(settings)
                 self?.applyHotCornerSettings(settings)
             }
         }
@@ -107,5 +108,9 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             guard let self else { return }
             self.showOverlay()
         }
+    }
+
+    private func applyHotkeySettings(_ settings: LaunchSettings) {
+        hotkeyManager.setHotkey(settings.toggleHotkey)
     }
 }

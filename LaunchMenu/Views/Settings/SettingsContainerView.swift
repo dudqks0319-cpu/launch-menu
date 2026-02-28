@@ -18,6 +18,13 @@ struct SettingsContainerView: View {
         ScrollView {
             VStack(spacing: 12) {
                 SettingsSectionView(title: L10n.t("settings.section.general")) {
+                    Picker(L10n.t("settings.toggle.hotkey"), selection: $settings.toggleHotkey) {
+                        ForEach(LaunchToggleHotkey.allCases, id: \.self) { hotkey in
+                            Text(hotkey.title).tag(hotkey)
+                        }
+                    }
+                    .pickerStyle(.menu)
+
                     Toggle(L10n.t("settings.show.hidden.apps"), isOn: $settings.showHiddenApps)
                     Stepper(value: $settings.gridColumnCount, in: 4...10) {
                         Text(L10n.f("settings.grid.columns", settings.gridColumnCount))
