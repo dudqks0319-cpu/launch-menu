@@ -128,7 +128,6 @@
 "tab.recent" = "최근";
 "uninstall.confirm.detail" = "\"%@\" 및 관련 파일 %d개를 삭제하시겠습니까?";
 "uninstall.confirm.generic" = "앱을 삭제하시겠습니까?";
-
 "error.backup.invalid.file" = "선택한 항목이 올바른 백업 파일이 아닙니다.";
 "error.backup.file.too.large" = "백업 파일이 너무 큽니다 (최대 %dMB).";
 "settings.toggle.hotkey" = "런치 열기 단축키";

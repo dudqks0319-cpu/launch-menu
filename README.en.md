@@ -16,8 +16,9 @@ Launch Menu is a macOS 26 (Tahoe) launcher app prototype that recreates and exte
 - Launch at login option
 - Multi-monitor overlay (merged screen frame)
 - FSEvents-based auto refresh on app install/remove
-- Localization (15 locales)
+- Localization (15 fully translated locales)
 - Backup/restore, third-party app uninstall
+- AppIcon asset set (macOS sizes) included
 
 ## Build
 ```bash

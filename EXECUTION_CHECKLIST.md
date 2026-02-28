@@ -36,5 +36,6 @@
 - [x] FSEvents 기반 앱 설치/삭제 자동 반영
 
 ## 남은 이슈
-- [ ] 다국어 12개 locale 실번역(현재 en fallback 문구 기반)
-- [ ] RootContentView 분리 리팩터링(SmartCategory/Color/Overlay 분리)
+- [x] 다국어 12개 locale 실번역 완료
+- [x] RootContentView 분리 리팩터링(SmartCategory/Color/Overlay 분리)
+- [x] 앱 아이콘(AppIcon.appiconset) 추가
