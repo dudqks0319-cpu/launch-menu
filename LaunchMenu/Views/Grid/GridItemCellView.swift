@@ -4,7 +4,9 @@ import SwiftUI
 struct GridItemCellView: View {
     var item: LaunchItem
     var icon: NSImage?
+    var isSelected: Bool = false
     var isEditing: Bool = false
+    var onSelect: () -> Void = {}
     var onEnterEditing: () -> Void = {}
     var onLaunch: (LaunchItem) -> Void = { _ in }
     var onRevealInFinder: (LaunchItem) -> Void = { _ in }
@@ -31,6 +33,10 @@ struct GridItemCellView: View {
         .frame(maxWidth: .infinity, minHeight: max(88, iconSize + 32))
         .padding(10)
         .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 12, style: .continuous))
+        .overlay(
+            RoundedRectangle(cornerRadius: 12, style: .continuous)
+                .strokeBorder(isSelected ? Color.accentColor.opacity(0.95) : Color.clear, lineWidth: isSelected ? 2 : 0)
+        )
         .contentShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
         .rotationEffect(isEditing ? .degrees(jigglePhase ? 2 : -2) : .zero)
         .animation(
@@ -43,6 +49,12 @@ struct GridItemCellView: View {
             guard isEditing == false else { return }
             onLaunch(item)
         }
+        .simultaneousGesture(
+            TapGesture()
+                .onEnded {
+                    onSelect()
+                }
+        )
         .onLongPressGesture(minimumDuration: 0.5) {
             onEnterEditing()
         }

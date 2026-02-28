@@ -10,8 +10,12 @@ Launch Menu is a macOS 26 (Tahoe) launcher app prototype that recreates and exte
 - Smart tabs (All / Recent / Frequent / New)
 - Paged/scroll grid modes
 - Jiggle mode + drag reorder + folder create/open
+- Keyboard navigation (arrow keys + Enter to launch/open)
 - Launchpad DB import
 - Dock add action, hot corner
+- Launch at login option
+- Multi-monitor overlay (merged screen frame)
+- FSEvents-based auto refresh on app install/remove
 - Localization (15 locales)
 - Backup/restore, third-party app uninstall
 

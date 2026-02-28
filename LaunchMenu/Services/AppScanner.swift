@@ -1,15 +1,25 @@
 import AppKit
+import CoreServices
 import Foundation
 
 protocol AppScanner {
     func scanApplications(includeHiddenApps: Bool) async -> [LaunchItem]
 }
 
-struct DefaultAppScanner: AppScanner {
+protocol AppScanMonitoring {
+    func startMonitoring(onChange: @escaping () -> Void)
+    func stopMonitoring()
+}
+
+final class DefaultAppScanner: AppScanner, AppScanMonitoring {
     private let fileManager: FileManager
     private let workspace: NSWorkspace
     private let iconCache: AppIconCaching?
     private let scanRoots: [URL]
+    private var eventStream: FSEventStreamRef?
+    private let monitorQueue = DispatchQueue(label: "launchmenu.appscanner.fsevents")
+    private var onMonitorChange: (() -> Void)?
+    private var pendingChangeNotification: DispatchWorkItem?
 
     init(
         fileManager: FileManager = .default,
@@ -21,6 +31,10 @@ struct DefaultAppScanner: AppScanner {
         self.workspace = workspace
         self.iconCache = iconCache
         self.scanRoots = scanRoots ?? Self.defaultScanRoots(fileManager: fileManager)
+    }
+
+    deinit {
+        stopMonitoring()
     }
 
     func scanApplications(includeHiddenApps: Bool = false) async -> [LaunchItem] {
@@ -46,6 +60,74 @@ struct DefaultAppScanner: AppScanner {
         return items.sorted {
             $0.title.localizedStandardCompare($1.title) == .orderedAscending
         }
+    }
+
+    func startMonitoring(onChange: @escaping () -> Void) {
+        stopMonitoring()
+        onMonitorChange = onChange
+
+        let monitorPaths = scanRoots
+            .filter { fileManager.fileExists(atPath: $0.path) }
+            .map(\.path) as CFArray
+        guard CFArrayGetCount(monitorPaths) > 0 else {
+            return
+        }
+
+        var context = FSEventStreamContext(
+            version: 0,
+            info: Unmanaged.passUnretained(self).toOpaque(),
+            retain: nil,
+            release: nil,
+            copyDescription: nil
+        )
+
+        let stream = FSEventStreamCreate(
+            nil,
+            { _, callbackInfo, _, _, _, _ in
+                guard let callbackInfo else { return }
+                let scanner = Unmanaged<DefaultAppScanner>.fromOpaque(callbackInfo).takeUnretainedValue()
+                scanner.notifyMonitorChanged()
+            },
+            &context,
+            monitorPaths,
+            FSEventStreamEventId(kFSEventStreamEventIdSinceNow),
+            0.8,
+            FSEventStreamCreateFlags(
+                kFSEventStreamCreateFlagFileEvents |
+                kFSEventStreamCreateFlagUseCFTypes |
+                kFSEventStreamCreateFlagNoDefer
+            )
+        )
+
+        guard let stream else {
+            return
+        }
+
+        eventStream = stream
+        FSEventStreamSetDispatchQueue(stream, monitorQueue)
+        FSEventStreamStart(stream)
+    }
+
+    func stopMonitoring() {
+        pendingChangeNotification?.cancel()
+        pendingChangeNotification = nil
+        onMonitorChange = nil
+
+        guard let eventStream else { return }
+        FSEventStreamStop(eventStream)
+        FSEventStreamInvalidate(eventStream)
+        FSEventStreamRelease(eventStream)
+        self.eventStream = nil
+    }
+
+    private func notifyMonitorChanged() {
+        pendingChangeNotification?.cancel()
+
+        let workItem = DispatchWorkItem { [weak self] in
+            self?.onMonitorChange?()
+        }
+        pendingChangeNotification = workItem
+        monitorQueue.asyncAfter(deadline: .now() + 0.5, execute: workItem)
     }
 
     private func appBundleURLs(in root: URL, includeHiddenApps: Bool) -> [URL] {

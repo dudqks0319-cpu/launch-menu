@@ -136,3 +136,6 @@
 "hotkey.option.space" = "Option+Space";
 "hotkey.f4" = "F4";
 "error.dock.duplicate" = "이미 Dock에 추가된 앱입니다.";
+"settings.launch.at.login" = "로그인 시 자동 실행";
+"error.login.unsupported" = "현재 macOS 버전에서는 로그인 항목 설정을 지원하지 않습니다.";
+"error.login.update.failed" = "로그인 항목 설정을 변경하지 못했습니다: %@";

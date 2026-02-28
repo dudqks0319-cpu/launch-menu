@@ -136,3 +136,6 @@
 "hotkey.option.space" = "Option+Space";
 "hotkey.f4" = "F4";
 "error.dock.duplicate" = "This app is already in Dock.";
+"settings.launch.at.login" = "Launch at login";
+"error.login.unsupported" = "Login item is not supported on this macOS version.";
+"error.login.update.failed" = "Could not update login item setting: %@";

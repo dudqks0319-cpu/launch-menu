@@ -25,6 +25,8 @@ struct SettingsContainerView: View {
                     }
                     .pickerStyle(.menu)
 
+                    Toggle(L10n.t("settings.launch.at.login"), isOn: $settings.launchAtLoginEnabled)
+
                     Toggle(L10n.t("settings.show.hidden.apps"), isOn: $settings.showHiddenApps)
                     Stepper(value: $settings.gridColumnCount, in: 4...10) {
                         Text(L10n.f("settings.grid.columns", settings.gridColumnCount))

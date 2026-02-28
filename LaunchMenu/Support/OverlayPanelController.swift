@@ -24,8 +24,13 @@ final class OverlayPanelController {
     }
 
     func show() {
-        guard let screen = NSScreen.main ?? NSScreen.screens.first else { return }
-        panel.setFrame(screen.frame, display: true, animate: false)
+        let allScreens = NSScreen.screens
+        guard let firstFrame = allScreens.first?.frame else { return }
+        let mergedFrame = allScreens.dropFirst().reduce(firstFrame) { partial, screen in
+            partial.union(screen.frame)
+        }
+
+        panel.setFrame(mergedFrame, display: true, animate: false)
         NSApp.activate(ignoringOtherApps: true)
         panel.makeKeyAndOrderFront(nil)
     }

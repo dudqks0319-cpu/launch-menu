@@ -84,6 +84,7 @@ enum BackgroundStyle: String, CaseIterable, Codable {
 
 struct LaunchSettings: Equatable, Codable {
     var toggleHotkey: LaunchToggleHotkey
+    var launchAtLoginEnabled: Bool
     var showHiddenApps: Bool
     var searchDebounceMilliseconds: Int
     var gridColumnCount: Int
@@ -103,6 +104,7 @@ struct LaunchSettings: Equatable, Codable {
 
     init(
         toggleHotkey: LaunchToggleHotkey = .commandL,
+        launchAtLoginEnabled: Bool = false,
         showHiddenApps: Bool = false,
         searchDebounceMilliseconds: Int = 200,
         gridColumnCount: Int = 4,
@@ -121,6 +123,7 @@ struct LaunchSettings: Equatable, Codable {
         customBackgroundHex: String = "#1A1A1A"
     ) {
         self.toggleHotkey = toggleHotkey
+        self.launchAtLoginEnabled = launchAtLoginEnabled
         self.showHiddenApps = showHiddenApps
         self.searchDebounceMilliseconds = searchDebounceMilliseconds
         self.gridColumnCount = gridColumnCount
@@ -145,6 +148,7 @@ struct LaunchSettings: Equatable, Codable {
 extension LaunchSettings {
     private enum CodingKeys: String, CodingKey {
         case toggleHotkey
+        case launchAtLoginEnabled
         case showHiddenApps
         case searchDebounceMilliseconds
         case gridColumnCount
@@ -166,6 +170,7 @@ extension LaunchSettings {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         toggleHotkey = try container.decodeIfPresent(LaunchToggleHotkey.self, forKey: .toggleHotkey) ?? .commandL
+        launchAtLoginEnabled = try container.decodeIfPresent(Bool.self, forKey: .launchAtLoginEnabled) ?? false
         showHiddenApps = try container.decodeIfPresent(Bool.self, forKey: .showHiddenApps) ?? false
         searchDebounceMilliseconds = try container.decodeIfPresent(Int.self, forKey: .searchDebounceMilliseconds) ?? 200
         gridColumnCount = try container.decodeIfPresent(Int.self, forKey: .gridColumnCount) ?? 4

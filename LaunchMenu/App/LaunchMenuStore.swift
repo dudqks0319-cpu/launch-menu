@@ -109,12 +109,23 @@ final class LaunchMenuStore: ObservableObject {
     }
 
     deinit {
+        if let monitor = appScanner as? AppScanMonitoring {
+            monitor.stopMonitoring()
+        }
         searchTask?.cancel()
     }
 
     func start() {
         guard isStarted == false else { return }
         isStarted = true
+
+        if let monitor = appScanner as? AppScanMonitoring {
+            monitor.startMonitoring { [weak self] in
+                Task { @MainActor in
+                    await self?.refreshApps()
+                }
+            }
+        }
 
         Task {
             await refreshApps()

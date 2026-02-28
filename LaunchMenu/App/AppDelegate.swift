@@ -1,4 +1,5 @@
 import AppKit
+import ServiceManagement
 
 @MainActor
 final class AppDelegate: NSObject, NSApplicationDelegate {
@@ -38,6 +39,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         NSApp.setActivationPolicy(.accessory)
         store.start()
 
+        applyHotkeySettings(store.settings)
+        applyLaunchAtLoginSettings(store.settings)
         applyHotCornerSettings(store.settings)
         settingsObserver = NotificationCenter.default.addObserver(
             forName: .launchMenuSettingsDidChange,
@@ -47,6 +50,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             guard let settings = notification.object as? LaunchSettings else { return }
             Task { @MainActor in
                 self?.applyHotkeySettings(settings)
+                self?.applyLaunchAtLoginSettings(settings)
                 self?.applyHotCornerSettings(settings)
             }
         }
@@ -112,5 +116,27 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
     private func applyHotkeySettings(_ settings: LaunchSettings) {
         hotkeyManager.setHotkey(settings.toggleHotkey)
+    }
+
+    private func applyLaunchAtLoginSettings(_ settings: LaunchSettings) {
+        guard #available(macOS 13.0, *) else {
+            if settings.launchAtLoginEnabled {
+                store.reportError(L10n.t("error.login.unsupported"))
+            }
+            return
+        }
+
+        do {
+            switch SMAppService.mainApp.status {
+            case .enabled where settings.launchAtLoginEnabled == false:
+                try SMAppService.mainApp.unregister()
+            case .notRegistered, .requiresApproval where settings.launchAtLoginEnabled:
+                try SMAppService.mainApp.register()
+            default:
+                break
+            }
+        } catch {
+            store.reportError(L10n.f("error.login.update.failed", error.localizedDescription))
+        }
     }
 }

@@ -21,6 +21,7 @@ struct RootContentView: View {
     @State private var renameTargetItem: LaunchItem?
     @State private var renameDraftName = ""
     @State private var selectedCategory: SmartCategory = .all
+    @State private var selectedGridItemIdentifier: String?
 
     var body: some View {
         ZStack {
@@ -63,6 +64,7 @@ struct RootContentView: View {
                     items: gridItems,
                     displayMode: displayMode,
                     currentPage: $currentPage,
+                    selectedIdentifier: $selectedGridItemIdentifier,
                     pageSize: 24,
                     columnCount: store.settings.gridColumnCount,
                     iconSize: CGFloat(store.settings.iconSize),
@@ -110,6 +112,16 @@ struct RootContentView: View {
                             presentedFolderID = folder.folderID
                         }
                     },
+                    onActivateSelectedItem: { item in
+                        switch item {
+                        case let .app(appItem):
+                            store.launch(appItem.item)
+                        case let .folder(folder):
+                            withAnimation(.easeInOut(duration: 0.16)) {
+                                presentedFolderID = folder.folderID
+                            }
+                        }
+                    },
                     onCreateFolder: { sourceIdentifier, targetIdentifier in
                         guard canEnterEditing else { return }
                         if let createdFolder = store.createFolder(
@@ -146,6 +158,7 @@ struct RootContentView: View {
         }
         .onChange(of: store.searchQuery) { _, _ in
             currentPage = 0
+            selectedGridItemIdentifier = nil
             if canEnterEditing == false {
                 isEditing = false
             }
@@ -153,6 +166,7 @@ struct RootContentView: View {
         }
         .onChange(of: store.selectedTabID) { _, _ in
             currentPage = 0
+            selectedGridItemIdentifier = nil
             if canEnterEditing == false {
                 isEditing = false
             }
@@ -165,6 +179,7 @@ struct RootContentView: View {
         }
         .onChange(of: selectedCategory) { _, _ in
             currentPage = 0
+            selectedGridItemIdentifier = nil
             if canEnterEditing == false {
                 isEditing = false
             }

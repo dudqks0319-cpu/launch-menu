@@ -30,3 +30,11 @@
 - [x] 설정 UI에 핫키 선택 메뉴 추가
 - [x] 안내 문구를 선택 핫키 기반 동적 표시로 변경
 - [x] 다국어 문구 상태 반영 (15개 locale 스캐폴드, en/ko 우선)
+- [x] 키보드 네비게이션 추가 (`↑↓←→` 선택, `Enter` 실행/폴더 열기)
+- [x] 로그인 시 자동 실행 설정 추가 (`SMAppService.mainApp`)
+- [x] 멀티 모니터 오버레이 확장 (스크린 영역 병합 표시)
+- [x] FSEvents 기반 앱 설치/삭제 자동 반영
+
+## 남은 이슈
+- [ ] 다국어 12개 locale 실번역(현재 en fallback 문구 기반)
+- [ ] RootContentView 분리 리팩터링(SmartCategory/Color/Overlay 분리)

@@ -79,6 +79,7 @@ struct GridContainerView: View {
     var items: [GridDisplayItem]
     var displayMode: GridDisplayMode
     @Binding private var currentPage: Int
+    @Binding private var selectedIdentifier: String?
     var pageSize: Int
     var columnCount: Int
     var iconSize: CGFloat
@@ -94,6 +95,7 @@ struct GridContainerView: View {
     var onHideItem: (LaunchItem) -> Void
     var onRenameItem: (LaunchItem) -> Void
     var onOpenFolder: (GridDisplayItem.Folder) -> Void
+    var onActivateSelectedItem: (GridDisplayItem) -> Void
     var onCreateFolder: ((String, String) -> Void)?
     var iconProvider: (LaunchItem) -> NSImage?
 
@@ -110,6 +112,7 @@ struct GridContainerView: View {
         items: [GridDisplayItem] = [],
         displayMode: GridDisplayMode = .paged,
         currentPage: Binding<Int> = .constant(0),
+        selectedIdentifier: Binding<String?> = .constant(nil),
         pageSize: Int = 24,
         columnCount: Int = 6,
         iconSize: CGFloat = 56,
@@ -125,12 +128,14 @@ struct GridContainerView: View {
         onHideItem: @escaping (LaunchItem) -> Void = { _ in },
         onRenameItem: @escaping (LaunchItem) -> Void = { _ in },
         onOpenFolder: @escaping (GridDisplayItem.Folder) -> Void = { _ in },
+        onActivateSelectedItem: @escaping (GridDisplayItem) -> Void = { _ in },
         onCreateFolder: ((String, String) -> Void)? = nil,
         iconProvider: @escaping (LaunchItem) -> NSImage? = { _ in nil }
     ) {
         self.items = items
         self.displayMode = displayMode
         _currentPage = currentPage
+        _selectedIdentifier = selectedIdentifier
         self.pageSize = max(pageSize, 1)
         self.columnCount = min(max(columnCount, 4), 10)
         self.iconSize = min(max(iconSize, 48), 96)
@@ -146,6 +151,7 @@ struct GridContainerView: View {
         self.onHideItem = onHideItem
         self.onRenameItem = onRenameItem
         self.onOpenFolder = onOpenFolder
+        self.onActivateSelectedItem = onActivateSelectedItem
         self.onCreateFolder = onCreateFolder
         self.iconProvider = iconProvider
     }
@@ -188,14 +194,20 @@ struct GridContainerView: View {
         .padding(16)
         .onAppear {
             clampCurrentPage()
+            ensureSelection()
             setupInputMonitor()
         }
         .onChange(of: items.count) { _, _ in
             clampCurrentPage()
+            ensureSelection()
         }
         .onChange(of: displayMode) { _, _ in
             clampCurrentPage()
+            ensureSelection()
             horizontalScrollAccumulator = 0
+        }
+        .onChange(of: visibleItems.map(\.stableIdentifier)) { _, _ in
+            ensureSelection()
         }
         .onChange(of: isEditing) { _, newValue in
             if newValue == false {
@@ -249,9 +261,15 @@ struct GridContainerView: View {
     @ViewBuilder
     private func gridCell(for item: GridDisplayItem) -> some View {
         let identifier = item.stableIdentifier
+        let isSelected = selectedIdentifier == identifier
 
         if isEditing {
-            cellContent(for: item, isEditing: true)
+            cellContent(
+                for: item,
+                isEditing: true,
+                isSelected: isSelected,
+                onSelect: { selectedIdentifier = identifier }
+            )
             .opacity(draggingIdentifier == identifier ? 0.45 : 1.0)
             .onDrag {
                 startDragging(item)
@@ -272,18 +290,30 @@ struct GridContainerView: View {
                 )
             )
         } else {
-            cellContent(for: item, isEditing: false)
+            cellContent(
+                for: item,
+                isEditing: false,
+                isSelected: isSelected,
+                onSelect: { selectedIdentifier = identifier }
+            )
         }
     }
 
     @ViewBuilder
-    private func cellContent(for item: GridDisplayItem, isEditing: Bool) -> some View {
+    private func cellContent(
+        for item: GridDisplayItem,
+        isEditing: Bool,
+        isSelected: Bool,
+        onSelect: @escaping () -> Void
+    ) -> some View {
         switch item {
         case .app(let app):
             GridItemCellView(
                 item: app.item,
                 icon: iconProvider(app.item),
+                isSelected: isSelected,
                 isEditing: isEditing,
+                onSelect: onSelect,
                 onEnterEditing: onEnterEditing,
                 onLaunch: onLaunch,
                 onRevealInFinder: onRevealInFinder,
@@ -297,7 +327,9 @@ struct GridContainerView: View {
         case .folder(let folder):
             FolderGridCellView(
                 folder: folder,
+                isSelected: isSelected,
                 isEditing: isEditing,
+                onSelect: onSelect,
                 onEnterEditing: onEnterEditing,
                 iconProvider: iconProvider,
                 showsName: showsAppNames,
@@ -350,6 +382,7 @@ struct GridContainerView: View {
         withAnimation(.easeInOut(duration: 0.22)) {
             currentPage = target
         }
+        ensureSelection()
     }
 
     private func moveToPreviousPage() {
@@ -360,6 +393,7 @@ struct GridContainerView: View {
         withAnimation(.easeInOut(duration: 0.22)) {
             currentPage = target
         }
+        ensureSelection()
     }
 
     private func moveToPage(_ page: Int) {
@@ -370,6 +404,7 @@ struct GridContainerView: View {
         withAnimation(.easeInOut(duration: 0.22)) {
             currentPage = target
         }
+        ensureSelection()
     }
 
     private func setupInputMonitor() {
@@ -380,7 +415,10 @@ struct GridContainerView: View {
                 handleHorizontalScroll(event)
                 return event
             case .keyDown:
-                return handleKeyboardPageSwitch(event) ? nil : event
+                if handleKeyboardPageSwitch(event) {
+                    return nil
+                }
+                return handleKeyboardNavigation(event) ? nil : event
             default:
                 return event
             }
@@ -430,6 +468,72 @@ struct GridContainerView: View {
         default:
             return false
         }
+    }
+
+    private func handleKeyboardNavigation(_ event: NSEvent) -> Bool {
+        guard isEditing == false else { return false }
+
+        switch event.keyCode {
+        case 123:
+            moveSelection(horizontalDelta: -1)
+            return true
+        case 124:
+            moveSelection(horizontalDelta: 1)
+            return true
+        case 125:
+            moveSelection(verticalDelta: 1)
+            return true
+        case 126:
+            moveSelection(verticalDelta: -1)
+            return true
+        case 36, 76:
+            activateSelection()
+            return true
+        default:
+            return false
+        }
+    }
+
+    private func moveSelection(horizontalDelta: Int = 0, verticalDelta: Int = 0) {
+        guard visibleItems.isEmpty == false else {
+            selectedIdentifier = nil
+            return
+        }
+
+        let currentIndex: Int
+        if let selectedIdentifier,
+           let existingIndex = visibleItems.firstIndex(where: { $0.stableIdentifier == selectedIdentifier }) {
+            currentIndex = existingIndex
+        } else {
+            selectedIdentifier = visibleItems[0].stableIdentifier
+            return
+        }
+
+        let targetIndex = currentIndex + horizontalDelta + (verticalDelta * columnCount)
+        let clampedIndex = min(max(targetIndex, 0), visibleItems.count - 1)
+        selectedIdentifier = visibleItems[clampedIndex].stableIdentifier
+    }
+
+    private func activateSelection() {
+        guard let selectedIdentifier else { return }
+        guard let selectedItem = visibleItems.first(where: { $0.stableIdentifier == selectedIdentifier }) else {
+            return
+        }
+        onActivateSelectedItem(selectedItem)
+    }
+
+    private func ensureSelection() {
+        guard visibleItems.isEmpty == false else {
+            selectedIdentifier = nil
+            return
+        }
+
+        if let selectedIdentifier,
+           visibleItems.contains(where: { $0.stableIdentifier == selectedIdentifier }) {
+            return
+        }
+
+        selectedIdentifier = visibleItems[0].stableIdentifier
     }
 
     private func cancelPendingFolderCreation() {
@@ -538,7 +642,9 @@ private struct GridItemDropDelegate: DropDelegate {
 
 private struct FolderGridCellView: View {
     let folder: GridDisplayItem.Folder
+    var isSelected: Bool
     var isEditing: Bool
+    var onSelect: () -> Void
     var onEnterEditing: () -> Void
     var iconProvider: (LaunchItem) -> NSImage?
     var showsName: Bool
@@ -557,6 +663,10 @@ private struct FolderGridCellView: View {
         .frame(maxWidth: .infinity, minHeight: 88)
         .padding(10)
         .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 12, style: .continuous))
+        .overlay(
+            RoundedRectangle(cornerRadius: 12, style: .continuous)
+                .strokeBorder(isSelected ? Color.accentColor.opacity(0.95) : Color.clear, lineWidth: isSelected ? 2 : 0)
+        )
         .contentShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
         .rotationEffect(isEditing ? .degrees(jigglePhase ? 2 : -2) : .zero)
         .animation(
@@ -569,6 +679,12 @@ private struct FolderGridCellView: View {
             guard isEditing == false else { return }
             onOpenFolder()
         }
+        .simultaneousGesture(
+            TapGesture()
+                .onEnded {
+                    onSelect()
+                }
+        )
         .onLongPressGesture(minimumDuration: 0.5) {
             onEnterEditing()
         }
