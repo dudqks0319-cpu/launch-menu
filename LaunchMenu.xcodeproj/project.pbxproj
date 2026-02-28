@@ -41,6 +41,7 @@
 		BE585FB7445DE1ECFE7DE9E5 /* LaunchpadImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EE673DEE5DA4228D5DFA84 /* LaunchpadImporter.swift */; };
 		D0E1ACCE759D8B55D92B6D09 /* SmartTabModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD33A2A18C424C39A6466AA /* SmartTabModel.swift */; };
 		D2587FB59DB780D6FC75D9DF /* AppScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AE2FEA50FD5BF421ABCC84 /* AppScanner.swift */; };
+		D2A42F8FD1D6553B80C02EE2 /* FolderIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCDF7AE41EBF09961F8CD9D /* FolderIconView.swift */; };
 		D4CC2EA01A0A68F57F39E1D0 /* SmartTabsContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B2128EE9EA0F518FDDEE9E /* SmartTabsContainerView.swift */; };
 		D7048485418774B547A2D011 /* LaunchMenuApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79386B1F215AB6AC0D0DF48 /* LaunchMenuApp.swift */; };
 		D72E3C3786877B2879A21F7F /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A29D27AA79FD0E05C2955E /* SearchService.swift */; };
@@ -112,6 +113,7 @@
 		D4B2128EE9EA0F518FDDEE9E /* SmartTabsContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartTabsContainerView.swift; sourceTree = "<group>"; };
 		D6759EA98390819D64E172DD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D79386B1F215AB6AC0D0DF48 /* LaunchMenuApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchMenuApp.swift; sourceTree = "<group>"; };
+		DBCDF7AE41EBF09961F8CD9D /* FolderIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderIconView.swift; sourceTree = "<group>"; };
 		E0EE673DEE5DA4228D5DFA84 /* LaunchpadImporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchpadImporter.swift; sourceTree = "<group>"; };
 		EBEF40803D4D241FD6E0A0B1 /* VisualEffectBlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectBlurView.swift; sourceTree = "<group>"; };
 		ED6D80C0D17A69841656A87F /* GridContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridContainerView.swift; sourceTree = "<group>"; };
@@ -251,6 +253,7 @@
 			children = (
 				A5829DE5AAE0E4DBE0AB1EB4 /* FolderContainerView.swift */,
 				C6C0E98E2DFDF7ECBE474C33 /* FolderHeaderView.swift */,
+				DBCDF7AE41EBF09961F8CD9D /* FolderIconView.swift */,
 			);
 			path = Folder;
 			sourceTree = "<group>";
@@ -418,6 +421,7 @@
 				5EDA946EE5E1AC03498C01A9 /* DockIntegration.swift in Sources */,
 				6E599D1622FCBE237EBEEA4E /* FolderContainerView.swift in Sources */,
 				043AC7D0AC9369D190903E8B /* FolderHeaderView.swift in Sources */,
+				D2A42F8FD1D6553B80C02EE2 /* FolderIconView.swift in Sources */,
 				5ADAB7971C2A6B069D98A7EE /* GridContainerView.swift in Sources */,
 				1B57E17F5BAF6BE55FE05CFD /* GridItemCellView.swift in Sources */,
 				B9E9EEC03CD01DF1F306C2A0 /* HotCornerManager.swift in Sources */,
