@@ -53,7 +53,6 @@
 		E528A0BA3060EDC939A6D282 /* SearchState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39EB0C41090AFC5E06FE284B /* SearchState.swift */; };
 		F5CA4170E7221506E0AE35B3 /* SmartCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814DF43855425C2A635ECF82 /* SmartCategory.swift */; };
 		F7B7C6ADFDDE467B8FE8B8C6 /* WidgetSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42B0C4F1D6ABF004390AFF6 /* WidgetSnapshot.swift */; };
-		FCF8A6E6FB785F0F444FB27B /* Localizable.strings.tmp in Resources */ = {isa = PBXBuildFile; fileRef = BFFD84913D9A4277568700BA /* Localizable.strings.tmp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,7 +108,6 @@
 		B6B829A9DA601305959A5791 /* ColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtensions.swift; sourceTree = "<group>"; };
 		BA1413E0DB1EBF1C5FEB6E70 /* SmartTabChipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartTabChipView.swift; sourceTree = "<group>"; };
 		BA8BE7DBF7C32BAA79F2D734 /* SettingsSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSectionView.swift; sourceTree = "<group>"; };
-		BFFD84913D9A4277568700BA /* Localizable.strings.tmp */ = {isa = PBXFileReference; name = Localizable.strings.tmp; path = cs.lproj/Localizable.strings.tmp; sourceTree = "<group>"; };
 		C17AA0D071A97407D5C4DD73 /* LaunchMenuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LaunchMenuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C42B0C4F1D6ABF004390AFF6 /* WidgetSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetSnapshot.swift; sourceTree = "<group>"; };
 		C6C0E98E2DFDF7ECBE474C33 /* FolderHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderHeaderView.swift; sourceTree = "<group>"; };
@@ -168,7 +166,6 @@
 			children = (
 				1D03A72A945D3FFA91065BD9 /* L10n.swift */,
 				6B3017D8936E968168C636EB /* Localizable.strings */,
-				BFFD84913D9A4277568700BA /* Localizable.strings.tmp */,
 			);
 			path = Localization;
 			sourceTree = "<group>";
@@ -426,7 +423,6 @@
 			files = (
 				3E04889B482E1EF129EE8B6A /* Assets.xcassets in Resources */,
 				94521A6D653829575262725C /* Localizable.strings in Resources */,
-				FCF8A6E6FB785F0F444FB27B /* Localizable.strings.tmp in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
