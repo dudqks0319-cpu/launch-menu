@@ -18,9 +18,9 @@ enum AppLaunchingError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .missingLaunchTarget:
-            return "실행 가능한 앱 경로 또는 번들 식별자가 없습니다."
+            return L10n.t("error.launch.missing.target")
         case .invalidLaunchTarget:
-            return "안전하지 않거나 지원되지 않는 앱 경로입니다."
+            return L10n.t("error.launch.invalid.target")
         }
     }
 }

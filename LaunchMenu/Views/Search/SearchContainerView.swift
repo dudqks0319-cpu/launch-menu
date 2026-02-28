@@ -37,7 +37,7 @@ struct SearchContainerView: View {
                 Image(systemName: "magnifyingglass")
                     .foregroundStyle(.secondary)
 
-                TextField("앱 검색", text: $query)
+                TextField(L10n.t("search.placeholder"), text: $query)
                     .textFieldStyle(.plain)
 
                 if query.isEmpty == false {

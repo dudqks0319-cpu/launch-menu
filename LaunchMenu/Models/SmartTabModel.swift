@@ -16,7 +16,7 @@ struct SmartTabModel: Identifiable, Hashable, Codable {
 
     init(
         id: String? = nil,
-        title: String = "All",
+        title: String = "",
         systemImage: String = "square.grid.2x2",
         predicateDescription: String? = nil,
         kind: SmartTabKind = .all
@@ -32,7 +32,7 @@ struct SmartTabModel: Identifiable, Hashable, Codable {
 extension SmartTabModel {
     static var all: SmartTabModel {
         SmartTabModel(
-            title: "All",
+            title: L10n.t("tab.all"),
             systemImage: "square.grid.2x2",
             predicateDescription: "all"
         )
@@ -40,7 +40,7 @@ extension SmartTabModel {
 
     static var recent: SmartTabModel {
         SmartTabModel(
-            title: "Recent",
+            title: L10n.t("tab.recent"),
             systemImage: "clock.fill",
             kind: .recent
         )
@@ -48,7 +48,7 @@ extension SmartTabModel {
 
     static var frequent: SmartTabModel {
         SmartTabModel(
-            title: "Frequent",
+            title: L10n.t("tab.frequent"),
             systemImage: "flame.fill",
             kind: .frequent
         )
@@ -56,7 +56,7 @@ extension SmartTabModel {
 
     static var newlyInstalled: SmartTabModel {
         SmartTabModel(
-            title: "New",
+            title: L10n.t("tab.new"),
             systemImage: "sparkles",
             kind: .newlyInstalled
         )

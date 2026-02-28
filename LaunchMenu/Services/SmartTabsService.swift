@@ -49,9 +49,7 @@ struct DefaultSmartTabsService: SmartTabsService {
     }
 
     private func sortedAllItems(_ items: [LaunchItem]) -> [LaunchItem] {
-        items.sorted {
-            $0.title.localizedStandardCompare($1.title) == .orderedAscending
-        }
+        items
     }
 
     private func newlyInstalledItems(from items: [LaunchItem]) -> [LaunchItem] {

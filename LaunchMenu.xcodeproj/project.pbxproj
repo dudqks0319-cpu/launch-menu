@@ -18,25 +18,33 @@
 		2D704168E142C5546BC5D707 /* HotkeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDDCD07EA615E8C4EEE1B7B /* HotkeyManager.swift */; };
 		3B4ED0A18A1BBED5E7EEC32B /* StatusBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0E0284F481D73F774DD2A1 /* StatusBarController.swift */; };
 		3E1C9B9379CE8D1618BDDBE0 /* SearchContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FE0491DDCEAF0223E2BD44 /* SearchContainerView.swift */; };
+		4017A3249FA3B7CE1CB2DA13 /* L10n.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D03A72A945D3FFA91065BD9 /* L10n.swift */; };
 		404531B3E9EC320BC0FC273C /* AppIconCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF511D05047C754FF6E0FD4 /* AppIconCache.swift */; };
 		4160DFCF90FEDF91999FD923 /* SettingsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9365C218EAC9AC32CB43C1 /* SettingsStorage.swift */; };
 		576767C2EA78ED21F1700361 /* LaunchMenuStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611F5F9ACA53E7268AF05CF8 /* LaunchMenuStore.swift */; };
 		590C73A629EBB3EF72C36249 /* OverlayPanelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC437BFCD67479BE4673E5E5 /* OverlayPanelController.swift */; };
 		5ADAB7971C2A6B069D98A7EE /* GridContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6D80C0D17A69841656A87F /* GridContainerView.swift */; };
 		5B8F5D4EC5BAA03ACC029129 /* LaunchFolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6F1E07407A202D2C6224C5 /* LaunchFolder.swift */; };
+		5EDA946EE5E1AC03498C01A9 /* DockIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5365638BAFC9F5631CFECB7A /* DockIntegration.swift */; };
 		64F39BCE8B21F661B0F605CA /* SettingsSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8BE7DBF7C32BAA79F2D734 /* SettingsSectionView.swift */; };
 		6E599D1622FCBE237EBEEA4E /* FolderContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5829DE5AAE0E4DBE0AB1EB4 /* FolderContainerView.swift */; };
 		75F2467A60127EB0D65B2776 /* LaunchSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC81FE9A64490D20B0FA4C7 /* LaunchSettings.swift */; };
+		7D2E380F2052020A76D50938 /* AppUninstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D79550A226E0447D4EDBE27 /* AppUninstaller.swift */; };
 		83B7F76238C33CC54433884A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED79066471041F05DAE951D1 /* AppDelegate.swift */; };
 		8D7DD4402747CB4CEEA2A5C2 /* SearchServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F4EA17D8C75A63B2CA4064 /* SearchServiceTests.swift */; };
 		8F21A1494BF3A6580FCF0AE9 /* SettingsContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD999B376A4B4189C5B88AA /* SettingsContainerView.swift */; };
+		94521A6D653829575262725C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6B3017D8936E968168C636EB /* Localizable.strings */; };
 		A92C03D19ADE85FEFF8ABA92 /* RecentItemsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492AF06CCFE207955631E5B5 /* RecentItemsStorage.swift */; };
+		B9E9EEC03CD01DF1F306C2A0 /* HotCornerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5F433571BACAD1D31D8538 /* HotCornerManager.swift */; };
+		BA9EC9433DE0A0E5D56C27CD /* BackupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9FD83BBD892261D86CE695 /* BackupManager.swift */; };
 		BD9A77DC3B1283840244101F /* SmartTabsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16329C9F937B83D73A9D85DA /* SmartTabsService.swift */; };
+		BE585FB7445DE1ECFE7DE9E5 /* LaunchpadImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EE673DEE5DA4228D5DFA84 /* LaunchpadImporter.swift */; };
 		D0E1ACCE759D8B55D92B6D09 /* SmartTabModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD33A2A18C424C39A6466AA /* SmartTabModel.swift */; };
 		D2587FB59DB780D6FC75D9DF /* AppScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AE2FEA50FD5BF421ABCC84 /* AppScanner.swift */; };
 		D4CC2EA01A0A68F57F39E1D0 /* SmartTabsContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B2128EE9EA0F518FDDEE9E /* SmartTabsContainerView.swift */; };
 		D7048485418774B547A2D011 /* LaunchMenuApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79386B1F215AB6AC0D0DF48 /* LaunchMenuApp.swift */; };
 		D72E3C3786877B2879A21F7F /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A29D27AA79FD0E05C2955E /* SearchService.swift */; };
+		D99C3BF9D84C650AD3CE4227 /* LayoutStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F932369ED06C7D3BD6DAF3 /* LayoutStore.swift */; };
 		E414EB76ECE7835EB4578477 /* RootContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B65BE967687D824D6748803 /* RootContentView.swift */; };
 		E528A0BA3060EDC939A6D282 /* SearchState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39EB0C41090AFC5E06FE284B /* SearchState.swift */; };
 		F7B7C6ADFDDE467B8FE8B8C6 /* WidgetSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42B0C4F1D6ABF004390AFF6 /* WidgetSnapshot.swift */; };
@@ -53,10 +61,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0119D161DC1A8FEB2F8CF23A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		01A29D27AA79FD0E05C2955E /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
 		06FE0491DDCEAF0223E2BD44 /* SearchContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchContainerView.swift; sourceTree = "<group>"; };
 		0B65BE967687D824D6748803 /* RootContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootContentView.swift; sourceTree = "<group>"; };
+		0B9FD83BBD892261D86CE695 /* BackupManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupManager.swift; sourceTree = "<group>"; };
+		1320DC371027727CC94E37C2 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		16329C9F937B83D73A9D85DA /* SmartTabsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartTabsService.swift; sourceTree = "<group>"; };
+		18FF9841A3EEFB97E32FAD54 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1ADB1C81F4BEC1CA26F863F2 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1D03A72A945D3FFA91065BD9 /* L10n.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = L10n.swift; sourceTree = "<group>"; };
+		20DD05B9468BA247EBA455B5 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		2D79550A226E0447D4EDBE27 /* AppUninstaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUninstaller.swift; sourceTree = "<group>"; };
 		2F0E0284F481D73F774DD2A1 /* StatusBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarController.swift; sourceTree = "<group>"; };
 		39B93F005B9B3EF885E90E2C /* AppLaunchingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLaunchingService.swift; sourceTree = "<group>"; };
 		39EB0C41090AFC5E06FE284B /* SearchState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchState.swift; sourceTree = "<group>"; };
@@ -65,29 +81,43 @@
 		3DC81FE9A64490D20B0FA4C7 /* LaunchSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchSettings.swift; sourceTree = "<group>"; };
 		3DF511D05047C754FF6E0FD4 /* AppIconCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconCache.swift; sourceTree = "<group>"; };
 		492AF06CCFE207955631E5B5 /* RecentItemsStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentItemsStorage.swift; sourceTree = "<group>"; };
+		5365638BAFC9F5631CFECB7A /* DockIntegration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DockIntegration.swift; sourceTree = "<group>"; };
 		5401279FE8FF76E7D4C7C371 /* GridItemCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridItemCellView.swift; sourceTree = "<group>"; };
+		560DA16F876791E2C05CB496 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
+		5B8170CF21B9181F8C14E864 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		5D5F433571BACAD1D31D8538 /* HotCornerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotCornerManager.swift; sourceTree = "<group>"; };
 		611F5F9ACA53E7268AF05CF8 /* LaunchMenuStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchMenuStore.swift; sourceTree = "<group>"; };
 		61DF97BD042791DF96A3E190 /* WidgetPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetPlaceholderView.swift; sourceTree = "<group>"; };
 		6346737F68F915820255AE5C /* SearchResultListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultListView.swift; sourceTree = "<group>"; };
+		6ACD6008A483990CED621B30 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7FD999B376A4B4189C5B88AA /* SettingsContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsContainerView.swift; sourceTree = "<group>"; };
 		89AE2FEA50FD5BF421ABCC84 /* AppScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppScanner.swift; sourceTree = "<group>"; };
 		948CBA677B41EC3400DADC46 /* LaunchItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchItem.swift; sourceTree = "<group>"; };
 		A5829DE5AAE0E4DBE0AB1EB4 /* FolderContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderContainerView.swift; sourceTree = "<group>"; };
 		AAC697761E66B997C165DDA2 /* LaunchMenu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LaunchMenu.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		ABAC1D6AF79CE0B7864C468B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		AF93547601743EBD924AE557 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/Localizable.strings; sourceTree = "<group>"; };
+		B3F932369ED06C7D3BD6DAF3 /* LayoutStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutStore.swift; sourceTree = "<group>"; };
 		BA1413E0DB1EBF1C5FEB6E70 /* SmartTabChipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartTabChipView.swift; sourceTree = "<group>"; };
 		BA8BE7DBF7C32BAA79F2D734 /* SettingsSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSectionView.swift; sourceTree = "<group>"; };
 		C17AA0D071A97407D5C4DD73 /* LaunchMenuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LaunchMenuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C42B0C4F1D6ABF004390AFF6 /* WidgetSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetSnapshot.swift; sourceTree = "<group>"; };
 		C6C0E98E2DFDF7ECBE474C33 /* FolderHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderHeaderView.swift; sourceTree = "<group>"; };
 		C8F4EA17D8C75A63B2CA4064 /* SearchServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchServiceTests.swift; sourceTree = "<group>"; };
+		C911ACF957AE2A73834422F0 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		CA5A09E34FF65255E708148D /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		CB6F1E07407A202D2C6224C5 /* LaunchFolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchFolder.swift; sourceTree = "<group>"; };
 		CC437BFCD67479BE4673E5E5 /* OverlayPanelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayPanelController.swift; sourceTree = "<group>"; };
+		CC5475587316D2F05B0C3A3D /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		D4B2128EE9EA0F518FDDEE9E /* SmartTabsContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartTabsContainerView.swift; sourceTree = "<group>"; };
+		D6759EA98390819D64E172DD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D79386B1F215AB6AC0D0DF48 /* LaunchMenuApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchMenuApp.swift; sourceTree = "<group>"; };
+		E0EE673DEE5DA4228D5DFA84 /* LaunchpadImporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchpadImporter.swift; sourceTree = "<group>"; };
 		EBEF40803D4D241FD6E0A0B1 /* VisualEffectBlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectBlurView.swift; sourceTree = "<group>"; };
 		ED6D80C0D17A69841656A87F /* GridContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridContainerView.swift; sourceTree = "<group>"; };
 		ED79066471041F05DAE951D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED9365C218EAC9AC32CB43C1 /* SettingsStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStorage.swift; sourceTree = "<group>"; };
+		FA8CE5B79C3D5D529ACDF27C /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -110,6 +140,15 @@
 				CC437BFCD67479BE4673E5E5 /* OverlayPanelController.swift */,
 			);
 			path = Support;
+			sourceTree = "<group>";
+		};
+		444B19974A49901C62E9ECB7 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				1D03A72A945D3FFA91065BD9 /* L10n.swift */,
+				6B3017D8936E968168C636EB /* Localizable.strings */,
+			);
+			path = Localization;
 			sourceTree = "<group>";
 		};
 		5CA02531BC6D7250C61EF368 /* Overlay */ = {
@@ -154,7 +193,11 @@
 				3DF511D05047C754FF6E0FD4 /* AppIconCache.swift */,
 				39B93F005B9B3EF885E90E2C /* AppLaunchingService.swift */,
 				89AE2FEA50FD5BF421ABCC84 /* AppScanner.swift */,
+				2D79550A226E0447D4EDBE27 /* AppUninstaller.swift */,
+				5365638BAFC9F5631CFECB7A /* DockIntegration.swift */,
+				5D5F433571BACAD1D31D8538 /* HotCornerManager.swift */,
 				3CDDCD07EA615E8C4EEE1B7B /* HotkeyManager.swift */,
+				E0EE673DEE5DA4228D5DFA84 /* LaunchpadImporter.swift */,
 				01A29D27AA79FD0E05C2955E /* SearchService.swift */,
 				16329C9F937B83D73A9D85DA /* SmartTabsService.swift */,
 			);
@@ -176,6 +219,8 @@
 		B67D0C920F9EF95C9E4994D9 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
+				0B9FD83BBD892261D86CE695 /* BackupManager.swift */,
+				B3F932369ED06C7D3BD6DAF3 /* LayoutStore.swift */,
 				492AF06CCFE207955631E5B5 /* RecentItemsStorage.swift */,
 				ED9365C218EAC9AC32CB43C1 /* SettingsStorage.swift */,
 			);
@@ -241,6 +286,7 @@
 			isa = PBXGroup;
 			children = (
 				C9F2D538D90987F8DC25B31A /* App */,
+				444B19974A49901C62E9ECB7 /* Localization */,
 				B5C8BAD266D2CEF8AD762F52 /* Models */,
 				B3641F567B007B3F18507E56 /* Services */,
 				B67D0C920F9EF95C9E4994D9 /* Storage */,
@@ -268,6 +314,7 @@
 			buildConfigurationList = 8E43BA5396DDF3ABFD982B92 /* Build configuration list for PBXNativeTarget "LaunchMenu" */;
 			buildPhases = (
 				023566058EF23B8B9FA1DE8B /* Sources */,
+				E1774AB0E661A4BA01697E32 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -318,7 +365,21 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				Base,
+				cs,
+				de,
 				en,
+				es,
+				fr,
+				hi,
+				it,
+				ja,
+				ko,
+				"pt-BR",
+				ru,
+				tr,
+				vi,
+				"zh-Hans",
+				"zh-Hant",
 			);
 			mainGroup = 9A53B9610395CEB99C7E86CF;
 			minimizedProjectReferenceProxies = 1;
@@ -332,6 +393,17 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		E1774AB0E661A4BA01697E32 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				94521A6D653829575262725C /* Localizable.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		023566058EF23B8B9FA1DE8B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -341,16 +413,23 @@
 				404531B3E9EC320BC0FC273C /* AppIconCache.swift in Sources */,
 				26641FB453D3218F666F2536 /* AppLaunchingService.swift in Sources */,
 				D2587FB59DB780D6FC75D9DF /* AppScanner.swift in Sources */,
+				7D2E380F2052020A76D50938 /* AppUninstaller.swift in Sources */,
+				BA9EC9433DE0A0E5D56C27CD /* BackupManager.swift in Sources */,
+				5EDA946EE5E1AC03498C01A9 /* DockIntegration.swift in Sources */,
 				6E599D1622FCBE237EBEEA4E /* FolderContainerView.swift in Sources */,
 				043AC7D0AC9369D190903E8B /* FolderHeaderView.swift in Sources */,
 				5ADAB7971C2A6B069D98A7EE /* GridContainerView.swift in Sources */,
 				1B57E17F5BAF6BE55FE05CFD /* GridItemCellView.swift in Sources */,
+				B9E9EEC03CD01DF1F306C2A0 /* HotCornerManager.swift in Sources */,
 				2D704168E142C5546BC5D707 /* HotkeyManager.swift in Sources */,
+				4017A3249FA3B7CE1CB2DA13 /* L10n.swift in Sources */,
 				5B8F5D4EC5BAA03ACC029129 /* LaunchFolder.swift in Sources */,
 				0091C0F1F6B660324ACEF256 /* LaunchItem.swift in Sources */,
 				D7048485418774B547A2D011 /* LaunchMenuApp.swift in Sources */,
 				576767C2EA78ED21F1700361 /* LaunchMenuStore.swift in Sources */,
 				75F2467A60127EB0D65B2776 /* LaunchSettings.swift in Sources */,
+				BE585FB7445DE1ECFE7DE9E5 /* LaunchpadImporter.swift in Sources */,
+				D99C3BF9D84C650AD3CE4227 /* LayoutStore.swift in Sources */,
 				590C73A629EBB3EF72C36249 /* OverlayPanelController.swift in Sources */,
 				A92C03D19ADE85FEFF8ABA92 /* RecentItemsStorage.swift in Sources */,
 				E414EB76ECE7835EB4578477 /* RootContentView.swift in Sources */,
@@ -389,6 +468,31 @@
 			targetProxy = 6F9EF5ABEBD3EB19006DDF72 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		6B3017D8936E968168C636EB /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1ADB1C81F4BEC1CA26F863F2 /* cs */,
+				5B8170CF21B9181F8C14E864 /* de */,
+				ABAC1D6AF79CE0B7864C468B /* en */,
+				20DD05B9468BA247EBA455B5 /* es */,
+				0119D161DC1A8FEB2F8CF23A /* fr */,
+				AF93547601743EBD924AE557 /* hi */,
+				6ACD6008A483990CED621B30 /* it */,
+				18FF9841A3EEFB97E32FAD54 /* ja */,
+				FA8CE5B79C3D5D529ACDF27C /* ko */,
+				CA5A09E34FF65255E708148D /* pt-BR */,
+				D6759EA98390819D64E172DD /* ru */,
+				C911ACF957AE2A73834422F0 /* tr */,
+				560DA16F876791E2C05CB496 /* vi */,
+				1320DC371027727CC94E37C2 /* zh-Hans */,
+				CC5475587316D2F05B0C3A3D /* zh-Hant */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		0FE31C2C3F89063EB6DCFB75 /* Debug */ = {

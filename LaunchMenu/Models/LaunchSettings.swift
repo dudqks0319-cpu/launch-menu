@@ -1,5 +1,59 @@
 import Foundation
 
+enum HotCornerLocation: String, CaseIterable, Codable {
+    case topLeft
+    case topRight
+    case bottomLeft
+    case bottomRight
+
+    var title: String {
+        switch self {
+        case .topLeft:
+            return L10n.t("hotcorner.top.left")
+        case .topRight:
+            return L10n.t("hotcorner.top.right")
+        case .bottomLeft:
+            return L10n.t("hotcorner.bottom.left")
+        case .bottomRight:
+            return L10n.t("hotcorner.bottom.right")
+        }
+    }
+}
+
+enum ThemeAppearanceMode: String, CaseIterable, Codable {
+    case system
+    case light
+    case dark
+
+    var title: String {
+        switch self {
+        case .system:
+            return L10n.t("appearance.mode.system")
+        case .light:
+            return L10n.t("appearance.mode.light")
+        case .dark:
+            return L10n.t("appearance.mode.dark")
+        }
+    }
+}
+
+enum BackgroundStyle: String, CaseIterable, Codable {
+    case liquidGlass
+    case solidBlack
+    case customColor
+
+    var title: String {
+        switch self {
+        case .liquidGlass:
+            return L10n.t("background.style.liquid")
+        case .solidBlack:
+            return L10n.t("background.style.solid.black")
+        case .customColor:
+            return L10n.t("background.style.custom.color")
+        }
+    }
+}
+
 struct LaunchSettings: Equatable, Codable {
     var showHiddenApps: Bool
     var searchDebounceMilliseconds: Int
@@ -9,6 +63,14 @@ struct LaunchSettings: Equatable, Codable {
     var newInstallWindowDays: Int
     var iconCacheItemLimit: Int
     var iconCacheMemoryLimitBytes: Int
+    var hotCornerEnabled: Bool
+    var hotCornerLocation: HotCornerLocation
+    var backgroundStyle: BackgroundStyle
+    var backgroundOpacity: Double
+    var iconSize: Double
+    var showsAppNames: Bool
+    var appearanceMode: ThemeAppearanceMode
+    var customBackgroundHex: String
 
     init(
         showHiddenApps: Bool = false,
@@ -18,7 +80,15 @@ struct LaunchSettings: Equatable, Codable {
         maxFrequentItems: Int = 12,
         newInstallWindowDays: Int = 14,
         iconCacheItemLimit: Int = 240,
-        iconCacheMemoryLimitBytes: Int = 64 * 1024 * 1024
+        iconCacheMemoryLimitBytes: Int = 64 * 1024 * 1024,
+        hotCornerEnabled: Bool = false,
+        hotCornerLocation: HotCornerLocation = .topLeft,
+        backgroundStyle: BackgroundStyle = .liquidGlass,
+        backgroundOpacity: Double = 0.22,
+        iconSize: Double = 56,
+        showsAppNames: Bool = true,
+        appearanceMode: ThemeAppearanceMode = .system,
+        customBackgroundHex: String = "#1A1A1A"
     ) {
         self.showHiddenApps = showHiddenApps
         self.searchDebounceMilliseconds = searchDebounceMilliseconds
@@ -28,6 +98,14 @@ struct LaunchSettings: Equatable, Codable {
         self.newInstallWindowDays = newInstallWindowDays
         self.iconCacheItemLimit = iconCacheItemLimit
         self.iconCacheMemoryLimitBytes = iconCacheMemoryLimitBytes
+        self.hotCornerEnabled = hotCornerEnabled
+        self.hotCornerLocation = hotCornerLocation
+        self.backgroundStyle = backgroundStyle
+        self.backgroundOpacity = min(max(backgroundOpacity, 0), 1)
+        self.iconSize = min(max(iconSize, 48), 96)
+        self.showsAppNames = showsAppNames
+        self.appearanceMode = appearanceMode
+        self.customBackgroundHex = customBackgroundHex
     }
 
     static let `default` = LaunchSettings()
@@ -43,6 +121,14 @@ extension LaunchSettings {
         case newInstallWindowDays
         case iconCacheItemLimit
         case iconCacheMemoryLimitBytes
+        case hotCornerEnabled
+        case hotCornerLocation
+        case backgroundStyle
+        case backgroundOpacity
+        case iconSize
+        case showsAppNames
+        case appearanceMode
+        case customBackgroundHex
     }
 
     init(from decoder: Decoder) throws {
@@ -55,5 +141,13 @@ extension LaunchSettings {
         newInstallWindowDays = try container.decodeIfPresent(Int.self, forKey: .newInstallWindowDays) ?? 14
         iconCacheItemLimit = try container.decodeIfPresent(Int.self, forKey: .iconCacheItemLimit) ?? 240
         iconCacheMemoryLimitBytes = try container.decodeIfPresent(Int.self, forKey: .iconCacheMemoryLimitBytes) ?? 64 * 1024 * 1024
+        hotCornerEnabled = try container.decodeIfPresent(Bool.self, forKey: .hotCornerEnabled) ?? false
+        hotCornerLocation = try container.decodeIfPresent(HotCornerLocation.self, forKey: .hotCornerLocation) ?? .topLeft
+        backgroundStyle = try container.decodeIfPresent(BackgroundStyle.self, forKey: .backgroundStyle) ?? .liquidGlass
+        backgroundOpacity = min(max(try container.decodeIfPresent(Double.self, forKey: .backgroundOpacity) ?? 0.22, 0), 1)
+        iconSize = min(max(try container.decodeIfPresent(Double.self, forKey: .iconSize) ?? 56, 48), 96)
+        showsAppNames = try container.decodeIfPresent(Bool.self, forKey: .showsAppNames) ?? true
+        appearanceMode = try container.decodeIfPresent(ThemeAppearanceMode.self, forKey: .appearanceMode) ?? .system
+        customBackgroundHex = try container.decodeIfPresent(String.self, forKey: .customBackgroundHex) ?? "#1A1A1A"
     }
 }

@@ -9,7 +9,7 @@ struct SearchResultListView: View {
     var body: some View {
         Group {
             if results.isEmpty {
-                Text("검색 결과가 없습니다.")
+                Text(L10n.t("search.empty"))
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
@@ -29,7 +29,7 @@ struct SearchResultListView: View {
                         VStack(alignment: .leading, spacing: 2) {
                             Text(item.title)
                                 .font(.body)
-                            Text(item.bundleIdentifier ?? "-")
+                            Text(item.bundleIdentifier ?? L10n.t("common.hyphen"))
                                 .font(.caption)
                                 .foregroundStyle(.secondary)
                                 .lineLimit(1)
