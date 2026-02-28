@@ -22,3 +22,16 @@ targets:
         CURRENT_PROJECT_VERSION: 1
         MARKETING_VERSION: 1.0
         CODE_SIGN_STYLE: Automatic
+  LaunchMenuTests:
+    type: bundle.unit-test
+    platform: macOS
+    deploymentTarget: "26.0"
+    sources:
+      - path: LaunchMenuTests
+    dependencies:
+      - target: LaunchMenu
+    settings:
+      base:
+        PRODUCT_NAME: LaunchMenuTests
+        PRODUCT_BUNDLE_IDENTIFIER: com.example.launchmenu.tests
+        GENERATE_INFOPLIST_FILE: YES
