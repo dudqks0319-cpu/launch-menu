@@ -43,20 +43,11 @@ final class GlobalHotkeyManager {
     }
 
     private func isToggleHotkey(_ event: NSEvent) -> Bool {
-        // Option + Space
-        if event.keyCode == 49 {
-            let required: NSEvent.ModifierFlags = [.option]
-            let ignored: NSEvent.ModifierFlags = [.command, .control, .shift]
-            let flags = event.modifierFlags.intersection(.deviceIndependentFlagsMask)
-            return flags.contains(required) && flags.intersection(ignored).isEmpty
-        }
-
-        // F4 단독 (키보드에 따라 fn 조합이 올 수 있어 function 플래그는 허용)
-        if event.keyCode == 118 {
-            let flags = event.modifierFlags.intersection([.command, .option, .control, .shift])
-            return flags.isEmpty
-        }
-
-        return false
+        // Command + L
+        guard event.keyCode == 37 else { return false }
+        let required: NSEvent.ModifierFlags = [.command]
+        let ignored: NSEvent.ModifierFlags = [.option, .control, .shift]
+        let flags = event.modifierFlags.intersection(.deviceIndependentFlagsMask)
+        return flags.contains(required) && flags.intersection(ignored).isEmpty
     }
 }

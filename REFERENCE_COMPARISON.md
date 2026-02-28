@@ -8,7 +8,7 @@
 
 ### 완료된 핵심 기능
 - 전체화면 오버레이 패널 + 블러 + ESC 닫기
-- 메뉴바 토글 + 글로벌 핫키(Option+Space, F4)
+- 메뉴바 토글 + 글로벌 핫키(Command+L)
 - 앱 스캔(`/Applications`, `/System/Applications`, `~/Applications`)
 - 앱 아이콘 캐시(NSCache)
 - 검색(한글 초성 + 퍼지 매칭)

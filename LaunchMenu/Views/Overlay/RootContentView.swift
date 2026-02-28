@@ -106,7 +106,7 @@ struct RootContentView: View {
                 Text("Launch Menu")
                     .font(.system(size: 30, weight: .semibold))
 
-                Text("Option+Space 또는 F4로 열고, ESC로 닫으실 수 있습니다.")
+                Text("Command+L로 열고, ESC로 닫으실 수 있습니다.")
                     .font(.system(size: 13))
                     .foregroundStyle(.secondary)
             }
